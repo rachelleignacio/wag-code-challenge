@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rachelleignacio.wagcodechallenge.MainActivity">
+    tools:context="com.rachelleignacio.wagcodechallenge.ui.MainActivity">
 
-    <android.support.v7.app.AlertController.RecycleListView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/user_list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

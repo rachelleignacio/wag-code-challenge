@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Wag Code Challenge</string>
+    <string name="gold_badges_text">Gold: %d</string>
+    <string name="silver_badges_text">Silver: %d</string>
+    <string name="bronze_badges_text">Bronze: %d</string>
 </resources>
