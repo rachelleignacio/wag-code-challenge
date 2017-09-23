@@ -13,13 +13,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DataRepository {
     private StackoverflowApiService soApiService;
 
-    public StackoverflowApiService initApiService() {
+    public void initApiService() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(StackoverflowApiService.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         soApiService = retrofit.create(StackoverflowApiService.class);
-        return soApiService;
     }
 
     public void getUsers(final Callback<SoResponseWrapper<User>> callback) {
