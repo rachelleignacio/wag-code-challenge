@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:padding="8dp"
     tools:context="com.rachelleignacio.wagcodechallenge.ui.MainActivity">
 
     <ImageView
@@ -24,19 +25,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/user_gold_count"
             android:text="@string/gold_badges_text"
-            android:textSize="12sp"/>
+            android:textSize="16sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/user_silver_count"
             android:text="@string/silver_badges_text"
-            android:textSize="12sp"/>
+            android:textSize="16sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/user_bronze_count"
             android:text="@string/bronze_badges_text"
-            android:textSize="12sp"/>
+            android:textSize="16sp"/>
 
     </LinearLayout>
 

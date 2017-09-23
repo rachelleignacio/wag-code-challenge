@@ -52,13 +52,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         User user = userList.get(position);
         Context context = holder.itemView.getContext();
 
-        holder.username.setText(user.getUsername());
+        holder.username.setText(user.username);
         holder.goldBadgeCount.setText(String.format(context.getString(R.string.gold_badges_text),
-                user.getGoldBadgeCount()));
+                user.badges.goldBadgeCount));
         holder.silverBadgeCount.setText(String.format(context.getString(R.string.silver_badges_text),
-                user.getSilverBadgeCount()));
+                user.badges.silverBadgeCount));
         holder.bronzeBadgeCount.setText(String.format(context.getString(R.string.bronze_badges_text),
-                user.getBronzeBadgeCount()));
+                user.badges.bronzeBadgeCount));
 
     }
 
