@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.rachelleignacio.wagcodechallenge.R;
 import com.rachelleignacio.wagcodechallenge.domain.User;
 
@@ -60,6 +61,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         holder.bronzeBadgeCount.setText(String.format(context.getString(R.string.bronze_badges_text),
                 user.badges.bronzeBadgeCount));
 
+        Glide.with(context).load(user.gravatarUrlString).into(holder.gravatar);
     }
 
     @Override
