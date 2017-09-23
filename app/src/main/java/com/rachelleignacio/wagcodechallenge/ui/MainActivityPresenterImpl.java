@@ -25,9 +25,11 @@ public class MainActivityPresenterImpl implements MainActivityPresenter {
 
     @Override
     public void getUserList() {
+        view.showLoading();
         Callback<SoResponseWrapper<User>> usersCallback = new Callback<SoResponseWrapper<User>>() {
             @Override
             public void onResponse(Call<SoResponseWrapper<User>> call, Response<SoResponseWrapper<User>> response) {
+                view.hideLoading();
                 if (response.isSuccessful()) {
                     view.showUserList(response.body().items);
                 } else {
