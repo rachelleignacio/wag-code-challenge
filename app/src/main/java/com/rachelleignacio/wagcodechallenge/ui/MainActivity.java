@@ -3,6 +3,7 @@ package com.rachelleignacio.wagcodechallenge.ui;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,11 +19,20 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements MainActivityPresenter.View {
     private MainActivityPresenter presenter;
     private DataRepository dataRepository;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.getUserList();
+            }
+        });
 
         dataRepository = DataRepository.getInstance(this);
         presenter = new MainActivityPresenterImpl(this, dataRepository);
@@ -51,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
 
     @Override
     public void toggleLoading(boolean isLoading) {
+        swipeRefreshLayout.setRefreshing(false);
         showOfflineMessage(false);
         if (isLoading) {
             findViewById(R.id.loading_spinner).setVisibility(View.VISIBLE);
