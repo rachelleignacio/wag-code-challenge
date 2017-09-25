@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Created by rachelleignacio on 9/24/17.
+ * Class for determining whether data should be fetched locally or from the API.
+ * This is a singleton the holds the only instances of both the local and remote data repos.
  */
 
 public class DataRepository implements RemoteDataRepository.OnUsersRetrievedListener {

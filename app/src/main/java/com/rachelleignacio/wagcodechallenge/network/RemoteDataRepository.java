@@ -16,8 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by rachelleignacio on 9/22/17.
+ * Singleton class for interacting with the Stackoverflow API service.
  */
-
 public class RemoteDataRepository {
     private StackoverflowApiService soApiService;
     private static RemoteDataRepository instance;

@@ -4,7 +4,8 @@ import java.util.List;
 
 /**
  * Created by rachelleignacio on 9/22/17.
- * stackoverflow returns the user list in a json array named items
+ * Since stackoverflow returns the user list in a json array named items, this is a wrapper class
+ * for easily parsing to a list of Users.
  */
 
 public class SoResponseWrapper<T> {

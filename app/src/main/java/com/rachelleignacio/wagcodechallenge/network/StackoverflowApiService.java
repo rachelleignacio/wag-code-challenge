@@ -7,6 +7,7 @@ import retrofit2.http.GET;
 
 /**
  * Created by rachelleignacio on 9/22/17.
+ * Interface class for hitting the Stackoverflow API.
  */
 
 public interface StackoverflowApiService {

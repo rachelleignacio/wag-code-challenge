@@ -16,8 +16,8 @@ import io.realm.RealmResults;
 
 /**
  * Created by rachelleignacio on 9/24/17.
+ * Singleton class for interacting with the local database via Realm.
  */
-
 public class LocalDataRepository {
     private static LocalDataRepository instance;
     private Realm realmInstance;
@@ -57,7 +57,7 @@ public class LocalDataRepository {
     public void refreshUsers(final List<User> newUserList) {
         final RealmResults<User> queryResults = realmInstance.where(User.class).findAllAsync();
 
-        //RealmChangeListener is a callback that gets called when the query async completes
+        //RealmChangeListener is a callback that gets called when the async query completes
         queryResults.addChangeListener(new RealmChangeListener<RealmResults<User>>() {
             @Override
             public void onChange(RealmResults<User> users) {
@@ -80,8 +80,7 @@ public class LocalDataRepository {
             }
         }, new Realm.Transaction.OnSuccess() {
             @Override
-            public void onSuccess() {
-            }
+            public void onSuccess() { /*do nothing*/ }
         }, new Realm.Transaction.OnError() {
             @Override
             public void onError(Throwable error) {
@@ -100,6 +99,7 @@ public class LocalDataRepository {
         }, new Realm.Transaction.OnSuccess() {
             @Override
             public void onSuccess() {
+                //save the new user list if delete transaction is successful
                 saveUserList(newUserList);
             }
         }, new Realm.Transaction.OnError() {

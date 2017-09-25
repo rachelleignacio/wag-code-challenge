@@ -11,7 +11,7 @@ import io.realm.annotations.PrimaryKey;
 
 public class User extends RealmObject {
     @SerializedName("user_id") //for gson parsing of SO response json
-    @PrimaryKey
+    @PrimaryKey //for Realm local database
     public int id;
 
     @SerializedName("display_name")
