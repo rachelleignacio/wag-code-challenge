@@ -48,8 +48,14 @@ public class LocalDataRepository {
             @Override
             public void onChange(RealmResults<User> users) {
                 queryResults.removeAllChangeListeners();
-                view.hideLoading();
-                view.showUserList(new ArrayList<>(users));
+                view.toggleLoading(false);
+                if (users.size() > 0) {
+                    view.showOfflineMessage(false);
+                    view.showUserList(new ArrayList<>(users));
+                } else {
+                    //should only be the case if device is offline on first launch
+                    view.showOfflineMessage(true);
+                }
             }
         });
     }

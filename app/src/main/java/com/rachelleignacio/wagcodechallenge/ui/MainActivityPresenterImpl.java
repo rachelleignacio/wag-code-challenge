@@ -18,7 +18,7 @@ public class MainActivityPresenterImpl implements MainActivityPresenter {
 
     @Override
     public void getUserList() {
-        view.showLoading();
+        view.toggleLoading(true);
         dataRepository.getUsers(((MainActivity)view).isNetworkConnected(), view);
     }
 }

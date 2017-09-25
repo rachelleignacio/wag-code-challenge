@@ -11,8 +11,8 @@ import java.util.List;
 public interface MainActivityPresenter {
     interface View {
         void showUserList(List<User> users);
-        void showLoading();
-        void hideLoading();
+        void toggleLoading(boolean isLoading);
+        void showOfflineMessage(boolean isOffline);
     }
 
     void getUserList();

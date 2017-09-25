@@ -50,13 +50,22 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
     }
 
     @Override
-    public void showLoading() {
-        findViewById(R.id.loading_spinner).setVisibility(View.VISIBLE);
+    public void toggleLoading(boolean isLoading) {
+        showOfflineMessage(false);
+        if (isLoading) {
+            findViewById(R.id.loading_spinner).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.loading_spinner).setVisibility(View.GONE);
+        }
     }
 
     @Override
-    public void hideLoading() {
-        findViewById(R.id.loading_spinner).setVisibility(View.GONE);
+    public void showOfflineMessage(boolean isOffline) {
+        if (isOffline) {
+            findViewById(R.id.offline_message).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.offline_message).setVisibility(View.GONE);
+        }
     }
 
     public boolean isNetworkConnected() {

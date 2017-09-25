@@ -43,7 +43,7 @@ public class RemoteDataRepository {
         Callback<SoResponseWrapper<User>> usersCallback = new Callback<SoResponseWrapper<User>>() {
             @Override
             public void onResponse(Call<SoResponseWrapper<User>> call, Response<SoResponseWrapper<User>> response) {
-                view.hideLoading();
+                view.toggleLoading(false);
                 if (response.isSuccessful()) {
                     List<User> users = response.body().items;
                     view.showUserList(users);
