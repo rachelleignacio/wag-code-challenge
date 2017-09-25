@@ -2,12 +2,16 @@ package com.rachelleignacio.wagcodechallenge.domain;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by rachelleignacio on 9/22/17.
  */
 
-public class User {
-    @SerializedName("user_id")
+public class User extends RealmObject {
+    @SerializedName("user_id") //for gson parsing of SO response json
+    @PrimaryKey
     public int id;
 
     @SerializedName("display_name")

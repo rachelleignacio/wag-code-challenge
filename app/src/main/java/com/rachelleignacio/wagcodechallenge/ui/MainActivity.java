@@ -1,15 +1,17 @@
 package com.rachelleignacio.wagcodechallenge.ui;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.rachelleignacio.wagcodechallenge.R;
+import com.rachelleignacio.wagcodechallenge.domain.DataRepository;
 import com.rachelleignacio.wagcodechallenge.domain.User;
-import com.rachelleignacio.wagcodechallenge.network.DataRepository;
 
 import java.util.List;
 
@@ -22,10 +24,21 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dataRepository = new DataRepository();
-        dataRepository.initApiService();
+        dataRepository = DataRepository.getInstance(this);
         presenter = new MainActivityPresenterImpl(this, dataRepository);
         presenter.getUserList();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        dataRepository.openLocalDatabase();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dataRepository.closeLocalDatabase();
     }
 
     @Override
@@ -44,5 +57,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
     @Override
     public void hideLoading() {
         findViewById(R.id.loading_spinner).setVisibility(View.GONE);
+    }
+
+    public boolean isNetworkConnected() {
+        NetworkInfo networkInfo = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnectedOrConnecting();
     }
 }
